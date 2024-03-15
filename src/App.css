@@ -1,0 +1,36 @@
+.render_page {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  flex-direction: row;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  height: 100%;
+  width: 100%;
+  /* justify-content: center; */
+}
+.render_middle_page {
+  padding: 5px;
+}
+.middle_page {
+  display: flex;
+  padding: 5px;
+}
+
+/* .render_second_render_last {
+  pointer-events: none;
+  cursor: default;
+} */
+.inputComponent {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.first_page {
+  height: 100%;
+}

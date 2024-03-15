@@ -1,8 +1,11 @@
 import { useState } from "react";
-import DemoJson from "./example.json";
-const RenderFirst = () => {
+// import DemoJson from "./example.json";
+import RenderSecond from "./RenderSecond";
+import RenderMiddle from "./RenderMiddle";
+const RenderFirst = ({ inputData, targetData }) => {
   // console.log(DemoJson);
   const space = 1;
+  const [isOpen, setIsOpen] = useState(false);
 
   const [cheArray, setCheArray] = useState([]);
   // const [cheVal, setCheVal] = useState([]);
@@ -31,7 +34,8 @@ const RenderFirst = () => {
           ? [...prev.concat(e.target.name)]
           : [...prev.filter((df) => df !== e.target.name)]
       );
-      setSelected(!selected);
+      // setSelected(!selected);
+      setIsOpen(true);
     };
     // console.log("ch", ch);
     // eslint-disable-next-line array-callback-return
@@ -44,7 +48,6 @@ const RenderFirst = () => {
 
       // console.log(cheArray);
 
-      // if (typeof value === "object") {
       if (Array.isArray(index)) {
         // console.log("Dj", index);
         return (
@@ -121,7 +124,7 @@ const RenderFirst = () => {
           </div>
         );
       } else {
-        // console.log("sourabh", index);
+        // console.log("sourabh", cheArray);
         return (
           <div
             className="sourabh"
@@ -136,7 +139,8 @@ const RenderFirst = () => {
                 checked={
                   cheArray.find((element) =>
                     element.includes(
-                      ch === null ? arrPos : ch.concat(":" + index)
+                      // ch === null ? arrPos : ch.concat(":" + index[0])
+                      ch === null ? index : ch.concat(":" + index)
                     )
                   )
                     ? "checked"
@@ -146,7 +150,8 @@ const RenderFirst = () => {
                 // style={{ paddingLeft: `${space * 10}px` }}
                 className="sourabh"
                 onChange={handleChange}
-                name={ch === null ? arrPos : ch.concat(":" + index)}
+                // name={ch === null ? arrPos : ch.concat(":" + index[0])}
+                name={ch === null ? index : ch.concat(":" + index)}
               />
             </label>
             <span>
@@ -162,8 +167,22 @@ const RenderFirst = () => {
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        {displayOne(DemoJson, space)}
-        <button type="submit">Save</button>
+        <div className="render_page">
+          <div className="render_middle_page">
+            {displayOne(inputData, space)}
+          </div>
+          <div>
+            <RenderMiddle
+              checkArray={cheArray}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              targetData={targetData}
+            />
+          </div>
+          {/* <div>
+              <RenderSecond checkArray={cheArray} />
+            </div> */}
+        </div>
       </form>
     </div>
   );
