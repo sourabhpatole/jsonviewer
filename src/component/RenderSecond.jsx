@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import style from "../App.css";
 import fs from "fs";
 import Table from "react-bootstrap/Table";
+import axios from "axios";
+import { Link } from "react-router-dom";
 const RenderSecond = ({ checkAr, checkArray }) => {
   const [demoObject, setDemoObject] = useState([]);
 
@@ -20,17 +22,32 @@ const RenderSecond = ({ checkAr, checkArray }) => {
     return obj;
   };
   let data = convertToObj(checkArray, checkAr);
-  // console.log("ObjectData", sampleData);
-  const exportData = () => {
-    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-      JSON.stringify(data)
-    )}`;
-    const link = document.createElement("a");
-    link.href = jsonString;
-    link.download = "data.json";
-
-    link.click();
+  let newData = JSON.stringify(data);
+  console.log(newData);
+  useEffect(() => {
+    exportData();
+  }, []);
+  const exportData = async () => {
+    await axios
+      .post("http://localhost:5000/", newData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer YOUR_ACCESS_TOKEN",
+        },
+      })
+      .then((response) => console.log(response.data));
   };
+  // console.log("ObjectData", sampleData);
+  // const exportData = () => {
+  //   const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+  //     JSON.stringify(data)
+  //   )}`;
+  //   const link = document.createElement("a");
+  //   link.href = jsonString;
+  //   link.download = "data.json";
+
+  //   link.click();
+  // };
   // console.log("DJWale", convertToObj(checkArray, checkAr));
   return (
     <div>
@@ -82,9 +99,11 @@ const RenderSecond = ({ checkAr, checkArray }) => {
             </tbody>;
           })} */}
       </Table>
-      <button type="button" onClick={exportData}>
-        Export Data
-      </button>
+      <Link to="/response">
+        <button type="button" onClick={exportData}>
+          Export Data
+        </button>
+      </Link>
     </div>
   );
 };

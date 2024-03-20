@@ -34,3 +34,21 @@
 .first_page {
   height: 100%;
 }
+
+.page_success {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  min-height: 100vh;
+  flex-direction: column;
+}
+.page_success_first {
+  padding: 20px;
+  height: 10vh;
+}
+.page_success_second {
+  min-height: 90vh;
+  display: flex;
+  width: 70vw;
+  justify-content: center;
+}

@@ -56,7 +56,7 @@ const RenderFirst = ({ inputData, targetData }) => {
               <input
                 type="checkbox"
                 value={value}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
                 // checked={jdata.includes(JSON.stringify(value)) ? "checked" : ""}
                 onChange={handleChange}
                 // checked={
@@ -77,7 +77,7 @@ const RenderFirst = ({ inputData, targetData }) => {
                 displayOne(
                   typeof e === "string" ? { [i]: e } : e,
                   space + 1,
-                  ch === null ? index : ch.concat(":" + index),
+                  ch === null ? index : ch.concat("." + index),
                   i
                 )
               )}
@@ -101,14 +101,14 @@ const RenderFirst = ({ inputData, targetData }) => {
                 checked={
                   cheArray.find((element) =>
                     element.includes(
-                      ch === null ? index : ch.concat(":" + index)
+                      ch === null ? index : ch.concat("." + index)
                     )
                   )
                     ? "checked"
                     : ""
                 }
                 // checked={selected}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
                 value={JSON.stringify(Object.keys(data))}
                 onChange={handleChange}
               />
@@ -118,7 +118,7 @@ const RenderFirst = ({ inputData, targetData }) => {
               {displayOne(
                 value,
                 space + 1,
-                ch === null ? index : ch.concat(":" + index)
+                ch === null ? index : ch.concat("." + index)
               )}
             </div>
           </div>
@@ -140,7 +140,7 @@ const RenderFirst = ({ inputData, targetData }) => {
                   cheArray.find((element) =>
                     element.includes(
                       // ch === null ? arrPos : ch.concat(":" + index[0])
-                      ch === null ? index : ch.concat(":" + index)
+                      ch === null ? index : ch.concat("." + index)
                     )
                   )
                     ? "checked"
@@ -151,7 +151,7 @@ const RenderFirst = ({ inputData, targetData }) => {
                 className="sourabh"
                 onChange={handleChange}
                 // name={ch === null ? arrPos : ch.concat(":" + index[0])}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
               />
             </label>
             <span>

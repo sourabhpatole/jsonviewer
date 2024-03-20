@@ -62,7 +62,7 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
               <input
                 type="checkbox"
                 value={value}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
                 // checked={jdata.includes(JSON.stringify(value)) ? "checked" : ""}
                 onChange={handleChange}
                 // checked={
@@ -83,7 +83,7 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
                 displayMiddle(
                   typeof e === "string" ? { [i]: e } : e,
                   space + 1,
-                  ch === null ? index : ch.concat(":" + index),
+                  ch === null ? index : ch.concat("." + index),
                   i
                 )
               )}
@@ -107,14 +107,14 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
                 checked={
                   cheArray.find((element) =>
                     element.includes(
-                      ch === null ? index : ch.concat(":" + index)
+                      ch === null ? index : ch.concat("." + index)
                     )
                   )
                     ? "checked"
                     : ""
                 }
                 // checked={selected}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
                 value={JSON.stringify(Object.keys(data))}
                 onChange={handleChange}
               />
@@ -124,7 +124,7 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
               {displayMiddle(
                 value,
                 space + 1,
-                ch === null ? index : ch.concat(":" + index)
+                ch === null ? index : ch.concat("." + index)
               )}
             </div>
           </div>
@@ -146,7 +146,7 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
                   cheArray.find((element) =>
                     element.includes(
                       // ch === null ? arrPos : ch.concat(":" + index)
-                      ch === null ? index : ch.concat(":" + index)
+                      ch === null ? index : ch.concat("." + index)
                     )
                   )
                     ? "checked"
@@ -157,7 +157,7 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
                 className="sourabh"
                 onChange={handleChange}
                 // name={ch === null ? arrPos : ch.concat(":" + index)}
-                name={ch === null ? index : ch.concat(":" + index)}
+                name={ch === null ? index : ch.concat("." + index)}
               />
             </label>
             <span>
@@ -183,11 +183,11 @@ const RenderMiddle = ({ checkArray, isOpen, setIsOpen, targetData }) => {
             keyboard={false}
           >
             <Modal.Body>
-              <input
+              {/* <input
                 type="text"
                 placeholder="Enter the Values"
                 onChange={handleInput}
-              />
+              /> */}
               {displayMiddle(targetData, space)}{" "}
             </Modal.Body>
             <Modal.Footer>
